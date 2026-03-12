@@ -162,12 +162,11 @@ const handleDeptChange = async () => {
                 </div>
 <div class="grid gap-2">
     <Label>País</Label>
-    <Input 
-        value="Colombia" 
-        readonly 
-        class="bg-muted" 
-        tabindex="-1" 
-    />
+    <div class="h-10 flex items-center px-3 border rounded-md bg-gray-50">
+        Colombia
+    </div>
+
+    <input type="hidden" name="country" value="Colombia">
 </div>
 
 <div class="grid gap-2">

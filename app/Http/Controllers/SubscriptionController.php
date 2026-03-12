@@ -142,7 +142,7 @@ class SubscriptionController extends Controller
 
             // Si está pendiente, notificamos al admin
             if ($newSubscription->status === 'pending_verification') {
-                Mail::to('eongrupoempresarial@gmail.com')->send(new SubscriptionPendingEmail($newSubscription));
+                Mail::to('notificacionvertex@gmail.com')->send(new SubscriptionPendingEmail($newSubscription));
             }
         }
 

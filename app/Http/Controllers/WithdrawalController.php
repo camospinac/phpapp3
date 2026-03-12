@@ -67,7 +67,7 @@ class WithdrawalController extends Controller
             Mail::to($user->email)->send(new WithdrawalCodeEmail($newWithdrawal));
 
             // Notificamos al admin
-            Mail::to('eongrupoempresarial@gmail.com')->send(new WithdrawalPendingEmail($newWithdrawal));
+            Mail::to('notificacionvertex@gmail.com')->send(new WithdrawalPendingEmail($newWithdrawal));
 
             // Usamos ->load('user') para asegurarnos de que los datos del usuario vayan incluidos
             event(new \App\Events\NewWithdrawalRequest($newWithdrawal->load('user')));
