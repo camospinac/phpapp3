@@ -1,0 +1,237 @@
+@import 'tailwindcss';
+
+@import 'tw-animate-css';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-sans: Instrument Sans, ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+    --radius-lg: var(--radius);
+    --radius-md: calc(var(--radius) - 2px);
+    --radius-sm: calc(var(--radius) - 4px);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-ring: var(--ring);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar-background);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
+
+@layer utilities {
+    body,
+    html {
+        --font-sans:
+            'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    }
+}
+
+:root {
+  /* Base - Fondo claro y texto oscuro */
+  --background: hsl(200 30% 98%);
+  --foreground: hsl(210 20% 15%);
+
+  /* Tarjetas y popovers */
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(210 20% 15%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(210 20% 15%);
+
+  /* Primario - Azul del logo */
+  --primary: #2596be;
+  --primary-foreground: hsl(0 0% 100%);
+
+  /* Secundarios */
+  --secondary: hsl(200 80% 95%);
+  --secondary-foreground: hsl(203 70% 30%);
+  
+  /* Muted */
+  --muted: hsl(200 20% 94%);
+  --muted-foreground: hsl(200 10% 40%);
+  
+  /* Accent */
+  --accent: hsl(200 80% 90%);
+  --accent-foreground: hsl(203 70% 25%);
+
+  /* Destructivo */
+  --destructive: hsl(0 70% 45%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  /* Bordes */
+  --border: hsl(200 20% 88%);
+  --input: hsl(200 20% 92%);
+  --ring: #2596be;
+
+  /* Charts */
+  --chart-1: #2596be;
+  --chart-2: hsl(200 70% 65%);
+  --chart-3: hsl(200 70% 80%);
+  --chart-4: #144d72;
+  --chart-5: hsl(200 20% 92%);
+
+  --radius: 0.5rem;
+
+  /* Sidebar */
+  --sidebar-background: hsl(0 0% 100%);
+  --sidebar-foreground: hsl(210 20% 20%);
+  --sidebar-primary: #2596be;
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(200 80% 95%);
+  --sidebar-accent-foreground: hsl(203 70% 30%);
+  --sidebar-border: hsl(200 20% 88%);
+  --sidebar-ring: #2596be;
+  --sidebar: hsl(0 0% 100%);
+}
+
+.dark {
+  --background: hsl(210 25% 7%);
+  --foreground: hsl(0 0% 96%);
+
+  --card: hsl(210 25% 9%);
+  --card-foreground: hsl(0 0% 96%);
+  --popover: hsl(210 25% 9%);
+  --popover-foreground: hsl(0 0% 96%);
+
+  --primary: #2596be;
+  --primary-foreground: hsl(0 0% 100%);
+
+  --secondary: hsl(203 45% 18%);
+  --secondary-foreground: hsl(200 80% 85%);
+
+  --muted: hsl(210 20% 15%);
+  --muted-foreground: hsl(200 10% 65%);
+
+  --accent: hsl(203 60% 25%);
+  --accent-foreground: hsl(0 0% 100%);
+
+  --destructive: hsl(0 70% 45%);
+  --destructive-foreground: hsl(0 0% 100%);
+
+  --border: hsl(210 20% 18%);
+  --input: hsl(210 20% 20%);
+  --ring: #2596be;
+
+  --chart-1: #2596be;
+  --chart-2: hsl(200 70% 60%);
+  --chart-3: hsl(200 70% 40%);
+  --chart-4: #144d72;
+  --chart-5: hsl(210 20% 25%);
+
+  --sidebar-background: hsl(210 25% 9%);
+  --sidebar-foreground: hsl(0 0% 95%);
+  --sidebar-primary: #2596be;
+  --sidebar-primary-foreground: hsl(0 0% 100%);
+  --sidebar-accent: hsl(203 45% 18%);
+  --sidebar-accent-foreground: hsl(200 80% 85%);
+  --sidebar-border: hsl(210 20% 20%);
+  --sidebar-ring: #2596be;
+  --sidebar: hsl(210 25% 9%);
+}
+
+
+.collapse {
+    visibility: visible !important;
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+
+.animate-spotlight {
+  position: relative; /* Necesario para posicionar el punto de luz */
+  overflow: hidden;   /* Oculta el punto de luz cuando está fuera del botón */
+}
+
+/* El punto de luz y su estela */
+.animate-spotlight::before {
+  content: '';
+  position: absolute;
+  width: 100px; /* Ancho del "cometa" */
+  height: 100%; /* Altura del botón */
+  /* Creamos un gradiente radial que es blanco en el centro (el punto) y se desvanece */
+  background: radial-gradient(circle at center, hsl(var(--primary)) 2%, transparent 25%);
+  animation: move-spotlight 4s linear infinite; /* Llama a la animación */
+}
+
+/* La animación que mueve el punto de luz alrededor del borde */
+@keyframes move-spotlight {
+  0% {
+    transform: translate(-100%, -100%) rotate(0deg);
+  }
+  25% {
+    transform: translate(0%, -100%) rotate(0deg);
+  }
+  50% {
+    transform: translate(0%, 0%) rotate(180deg);
+  }
+  75% {
+    transform: translate(-100%, 0%) rotate(180deg);
+  }
+  100% {
+    transform: translate(-100%, -100%) rotate(360deg);
+  }
+}
