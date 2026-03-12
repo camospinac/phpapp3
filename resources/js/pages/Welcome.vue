@@ -290,7 +290,7 @@ onMounted(() => {
               <h5 class="mb-2">Habla con un asesor</h5>
               <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex..." target="_blank"
                 class="text-decoration-none">
-                <h4 style="color: #25D366;" class="mb-0">+57 321 3705763</h4>
+                <h4 style="color: #25D366;" class="mb-0">+57 318 002 1424</h4>
               </a>
             </div>
           </div>
@@ -586,7 +586,7 @@ onMounted(() => {
               <h5 class="mb-2">¿Tienes dudas? Escríbenos</h5>
               <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex..." target="_blank"
                 class="text-decoration-none">
-                <h4 style="color: #25D366;" class="mb-0">+57 321 3705763</h4>
+                <h4 style="color: #25D366;" class="mb-0">+57 318 002 1424</h4>
               </a>
             </div>
           </div>
@@ -681,7 +681,7 @@ onMounted(() => {
                 <i class="bi bi-telephone text-primary me-2"></i>
                 <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex%2C%20estamos%20ac%C3%A1%20para%20ayudarte%20a%20crecer%20tu%20dinero..."
                   target="_blank" class="text-decoration-none">
-                  <p class="mb-0" style="color: #444444;">+57 321 3705763</p>
+                  <p class="mb-0" style="color: #444444;">+57 318 002 1424</p>
                 </a>
               </div>
 
