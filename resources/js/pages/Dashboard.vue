@@ -779,43 +779,38 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                         <p class="mt-1 text-4xl font-semibold tracking-tight text-teal-500">{{
                             formatCurrency(totalAvailable) }}</p>
                     </div>
-                    <div class="md:col-span-2 flex flex-col items-center gap-4">
+                    <div class="md:col-span-2 flex flex-col items-center gap-5 w-full max-w-3xl mx-auto mt-2">
+    
+    <Button @click="isInvestmentModalOpen = true"
+        class="w-full h-16 md:h-20 text-xl md:text-2xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-spotlight">
+        <TrendingUp class="mr-3 h-7 w-7 md:h-8 md:w-8" />
+        Nueva Inversión
+    </Button>
 
-                        <div class="w-full flex flex-col md:flex-row justify-center items-center gap-4">
-                            <Button @click="isInvestmentModalOpen = true"
-                                class="w-full md:w-auto text-lg h-12 px-6 animate-spotlight">
-                                <TrendingUp class="mr-3 h-6 w-6" />
-                                Nueva Inversión
-                            </Button>
-                            <Button @click="isWithdrawalModalOpen = true" variant="outline"
-                                class="w-full md:w-auto text-lg h-12 px-6">
-                                <Landmark class="mr-3 h-6 w-6" />
-                                Retirar Saldo
-                            </Button>
+    <div class="w-full flex flex-col sm:flex-row justify-center items-center gap-3">
+        
+        <Button @click="isWithdrawalModalOpen = true" variant="outline"
+            class="w-full sm:flex-1 text-base h-12 px-6 rounded-full hover:bg-muted transition-colors border-2">
+            <Landmark class="mr-2 h-5 w-5 text-muted-foreground" />
+            Retirar Saldo
+        </Button>
 
-                            <Button @click="isTransferModalOpen = true" variant="outline"
-                                class="w-full md:w-auto text-lg h-12 px-6">
-                                <Send class="mr-3 h-6 w-6" />
-                                Enviar Dinero
-                            </Button>
-                        </div>
+        <Button @click="isTransferModalOpen = true" variant="outline"
+            class="w-full sm:flex-1 text-base h-12 px-6 rounded-full hover:bg-muted transition-colors border-2">
+            <Send class="mr-2 h-5 w-5 text-muted-foreground" />
+            Enviar Dinero
+        </Button>
 
-                        <div class="w-full flex flex-col md:flex-row justify-center items-center gap-4">
-                            <Link :href="route('referrals.index')" class="w-full md:w-auto">
-                            <Button variant="secondary" class="w-full text-lg h-12 px-6">
-                                <Gift class="mr-3 h-6 w-6" />
-                                Mis Referidos
-                            </Button>
-                            </Link>
-                            <Link :href="route('winners.index')" class="w-full md:w-auto">
-                            <Button variant="secondary" class="w-full text-lg h-12 px-6">
-                                <Gem class="mr-3 h-6 w-6" />
-                                Últimos Ganadores
-                            </Button>
-                            </Link>
-                        </div>
+        <Link :href="route('referrals.index')" class="w-full sm:flex-1">
+            <Button variant="secondary" class="w-full text-base h-12 px-6 rounded-full shadow-sm hover:shadow-md transition-all">
+                <Gift class="mr-2 h-5 w-5" />
+                Mis Referidos
+            </Button>
+        </Link>
+        
+    </div>
 
-                    </div>
+</div>
                 </div>
             </template>
             <template v-else>
