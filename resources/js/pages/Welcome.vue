@@ -279,7 +279,7 @@ onMounted(() => {
 
           <!-- CTA con contacto -->
           <div class="d-flex align-items-center mt-5 wow fadeIn" data-wow-delay="0.6s">
-            <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex..." target="_blank"
+            <a href="https://wa.me/573180021424?text=Somos%20Grupo%20Vertex..." target="_blank"
               class="text-decoration-none">
               <div class="d-flex align-items-center justify-content-center rounded shadow-sm"
                 style="width: 60px; height: 60px; background-color: #25D366;">
@@ -288,7 +288,7 @@ onMounted(() => {
             </a>
             <div class="ps-4">
               <h5 class="mb-2">Habla con un asesor</h5>
-              <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex..." target="_blank"
+              <a href="https://wa.me/573180021424?text=Somos%20Grupo%20Vertex..." target="_blank"
                 class="text-decoration-none">
                 <h4 style="color: #25D366;" class="mb-0">+57 318 002 1424</h4>
               </a>
@@ -575,7 +575,7 @@ onMounted(() => {
             </div>
           </div>
           <div class="d-flex align-items-center mt-2 wow zoomIn" data-wow-delay="0.6s">
-            <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex..." target="_blank"
+            <a href="https://wa.me/573180021424?text=Somos%20Grupo%20Vertex..." target="_blank"
               class="text-decoration-none">
               <div class="d-flex align-items-center justify-content-center rounded shadow-sm"
                 style="width: 60px; height: 60px; background-color: #25D366;">
@@ -584,7 +584,7 @@ onMounted(() => {
             </a>
             <div class="ps-4">
               <h5 class="mb-2">¿Tienes dudas? Escríbenos</h5>
-              <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex..." target="_blank"
+              <a href="https://wa.me/573180021424?text=Somos%20Grupo%20Vertex..." target="_blank"
                 class="text-decoration-none">
                 <h4 style="color: #25D366;" class="mb-0">+57 318 002 1424</h4>
               </a>
@@ -679,9 +679,9 @@ onMounted(() => {
               </div>
               <div class="d-flex mb-2">
                 <i class="bi bi-telephone text-primary me-2"></i>
-                <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex%2C%20estamos%20ac%C3%A1%20para%20ayudarte%20a%20crecer%20tu%20dinero..."
+                <a href="https://wa.me/573180021424?text=Somos%20Grupo%20Vertex%2C%20estamos%20ac%C3%A1%20para%20ayudarte%20a%20crecer%20tu%20dinero..."
                   target="_blank" class="text-decoration-none">
-                  <p class="mb-0" style="color: #444444;">+57 318 0021424</p>
+                  <p class="mb-0" style="color: #444444;">+57 318 002 1424</p>
                 </a>
               </div>
 
