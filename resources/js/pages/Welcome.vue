@@ -681,7 +681,7 @@ onMounted(() => {
                 <i class="bi bi-telephone text-primary me-2"></i>
                 <a href="https://wa.me/573229484570?text=Somos%20Grupo%20Vertex%2C%20estamos%20ac%C3%A1%20para%20ayudarte%20a%20crecer%20tu%20dinero..."
                   target="_blank" class="text-decoration-none">
-                  <p class="mb-0" style="color: #444444;">+57 318 002 1424</p>
+                  <p class="mb-0" style="color: #444444;">+57 318 0021424</p>
                 </a>
               </div>
 
