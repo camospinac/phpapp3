@@ -15,7 +15,7 @@
     <div class="container">
         <div class="header">
             <img src="{{ asset('img/icons/icon-72x72.png') }}" alt="Logo" class="logo">
-            <h2>¡Bienvenido a EON Grupo Empresarial!</h2>
+            <h2>¡Bienvenido a Vertex Group!</h2>
         </div>
         <div class="content">
             <h3>¡Hola, {{ $user->nombres }}!</h3>
@@ -25,10 +25,10 @@
                 <a href="{{ route('login') }}" class="button">Ir a mi cuenta</a>
             </div>
             <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
-            <p>Saludos,<br>El equipo de EON Grupo Empresarial</p>
+            <p>Saludos,<br>El equipo de Vertex Group</p>
         </div>
         <div class="footer">
-            <p>&copy; {{ date('Y') }} EON Grupo Empresarial. Todos los derechos reservados.</p>
+            <p>&copy; {{ date('Y') }} Vertex Group. Todos los derechos reservados.</p>
         </div>
     </div>
 </body>

@@ -27,9 +27,9 @@ export default defineConfig({
                 globPatterns: ['**/*.{js,css,html,ico,png,svg}']
             },
             manifest: {
-                name: 'Eon Grupo',
-                short_name: 'EON',
-                description: 'EON Grupo Empresarial.',
+                name: 'Vertex Group',
+                short_name: 'Vertex Group',
+                description: 'Vertex Grupo Económico',
                 theme_color: '#000000',
                 background_color: '#ffffff',
                 display: 'standalone',

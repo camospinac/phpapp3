@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="footer">
-            <p>&copy; {{ date('Y') }} EON Grupo Empresarial. Todos los derechos reservados.</p>
+            <p>&copy; {{ date('Y') }} Vertex Group. Todos los derechos reservados.</p>
         </div>
     </div>
 </body>

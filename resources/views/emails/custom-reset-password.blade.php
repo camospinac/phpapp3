@@ -23,7 +23,7 @@
             <p>Para continuar, haz clic en el siguiente botón:</p>
             <a href="{{ $resetUrl }}" class="button">Restablecer Contraseña</a>
             <p>Este enlace para restablecer la contraseña expirará en 60 minutos.</p>
-            <p>Saludos,<br>El equipo de EON Grupo Empresarial</p>
+            <p>Saludos,<br>El equipo de Vertex Group</p>
         </div>
         <div class="footer">
             <p>Si tienes problemas con el botón, copia y pega la siguiente URL en tu navegador:</p>
