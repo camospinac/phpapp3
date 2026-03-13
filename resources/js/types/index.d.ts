@@ -68,6 +68,7 @@ export interface User {
     next_rank: {
         name: string;
         required_referrals: number;
+        reward_amount: number;
     } | null;
     
 }

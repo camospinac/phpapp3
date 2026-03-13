@@ -15,7 +15,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Share2, Mail, MessageSquareText, Facebook  } from 'lucide-vue-next';
+import { Share2, Mail, MessageSquareText, Facebook } from 'lucide-vue-next';
 
 
 
@@ -223,13 +223,6 @@ const balanceSubscriptions = computed(() =>
     props.subscriptions.filter(sub => !sub.payment_receipt_path)
 );
 
-const switchToClosed = (subscriptionId: number) => {
-    if (confirm('¿Estás seguro de que quieres cambiar este plan a un Contrato Cerrado? Esta acción es irreversible.')) {
-        router.post(route('subscriptions.switch', { subscription: subscriptionId }), {}, {
-            preserveScroll: true,
-        });
-    }
-};
 
 const page = usePage();
 const user = usePage().props.auth.user;
@@ -287,41 +280,35 @@ const closeWithdrawalModal = () => {
     generatedCode.value = null;
 };
 
-// const paymentMethods = [
-//     { name: 'Nequi', value: 'NEQUI', logo: '/img/logos/nequi.jpg' },
-//     { name: 'Daviplata', value: 'DAVIPLATA', logo: '/img/logos/daviplata.png' },
-//     { name: 'Movi', value: 'MOVI', logo: '/img/logos/movi.jpg' },
-//     { name: 'Zelle', value: 'ZELLE', logo: '/img/logos/zelle.png' },
-// ];
 
 const getLogoUrl = (path: string | null) => {
     if (!path) return 'https://placehold.co/100x100/gray/white?text=Logo';
-    
+
     // 1. Si es una URL externa (empieza con http o https)
     if (path.startsWith('http')) {
         return path;
     }
-    
+
     // 2. Si es una ruta local de la carpeta public/img
     if (path.startsWith('/img')) {
         return path;
     }
-    
+
     // 3. Por defecto, asumimos que está en storage (archivos subidos)
     return `/storage/${path}`;
 }
 
 // Definimos los métodos fijos
 const staticPaymentMethods = [
-    { 
-        id: 1, 
-        name: 'Nequi', 
-        logo_path: 'https://brandemia.org/contenido/subidas/2023/10/nequi-nuevo-logotipo-1200x670.jpg' 
+    {
+        id: 1,
+        name: 'Nequi',
+        logo_path: 'https://brandemia.org/contenido/subidas/2023/10/nequi-nuevo-logotipo-1200x670.jpg'
     },
-    { 
-        id: 2, 
-        name: 'Bre-B', 
-        logo_path: 'https://images.ctfassets.net/zc86zymizgq6/1Ay66qQPaLcLMzkd6ji8wH/890bfe40dfa4a3af1ca2c5ed6e52ddfa/logobre-b.png' 
+    {
+        id: 2,
+        name: 'Bre-B',
+        logo_path: 'https://images.ctfassets.net/zc86zymizgq6/1Ay66qQPaLcLMzkd6ji8wH/890bfe40dfa4a3af1ca2c5ed6e52ddfa/logobre-b.png'
     },
 ];
 
@@ -391,13 +378,10 @@ const copyShareLink = () => {
     alert('¡Enlace de invitación copiado!');
 };
 
-// Genera los enlaces para las apps sociales
-const text = encodeURIComponent('¡Te invito a unirte a ganar con EON!');
+const text = encodeURIComponent('¡Te invito a unirte a ganar con Vertex Group!');
 const whatsappUrl = computed(() => `https://api.whatsapp.com/send?text=${text} ${registrationLink.value}`);
 const facebookUrl = computed(() => `https://www.facebook.com/sharer/sharer.php?u=${registrationLink.value}`);
 const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando mi enlace: ${registrationLink.value}`);
-
-// --- FIN DEL BLOQUE A AÑADIR ---
 
 </script>
 
@@ -482,19 +466,34 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                             </div>
                         </div>
 
-                        <div v-if="user.next_rank" class="w-full md:w-1/3 space-y-2">
-                            <div class="flex justify-between items-center">
-                                <p class="text-base font-medium text-muted-foreground">Progreso a:</p>
-                                <p class="text-base font-bold text-foreground">{{ user.next_rank.name }}</p>
+                        <div v-if="user.next_rank" class="w-full md:w-1/3 flex flex-col justify-center space-y-3">
+
+                            <div
+                                class="bg-primary/5 border border-primary/20 rounded-lg py-2 px-3 text-center shadow-sm">
+                                <p class="text-sm font-medium text-foreground">
+                                    A solo <span class="font-bold text-primary text-base">{{
+                                        user.next_rank.required_referrals - user.referral_count }} referidos</span>
+                                    de ganar <span class="font-bold text-green-600 dark:text-green-400 text-base">
+                                        ${{ new Intl.NumberFormat('es-CO').format(user.next_rank.reward_amount) }}
+                                    </span>
+                                </p>
                             </div>
-                            <div class="w-full bg-muted rounded-full h-2.5">
-                                <div class="bg-primary h-2.5 rounded-full"
-                                    :style="{ width: (user.referral_count / user.next_rank.required_referrals) * 100 + '%' }">
+
+                            <div class="space-y-1.5">
+                                <div class="flex justify-between items-center text-sm">
+                                    <span class="font-medium text-muted-foreground">Rango: <strong
+                                            class="text-foreground">{{ user.next_rank.name }}</strong></span>
+                                    <span class="font-bold">{{ user.referral_count }} / {{
+                                        user.next_rank.required_referrals }}</span>
+                                </div>
+
+                                <div class="w-full bg-secondary rounded-full h-2.5 overflow-hidden shadow-inner">
+                                    <div class="bg-gradient-to-r from-primary to-primary/60 h-full rounded-full transition-all duration-1000 ease-out"
+                                        :style="{ width: (user.referral_count / user.next_rank.required_referrals) * 100 + '%' }">
+                                    </div>
                                 </div>
                             </div>
-                            <p class="text-xs text-muted-foreground text-right">
-                                {{ user.referral_count }} / {{ user.next_rank.required_referrals }} referidos
-                            </p>
+
                         </div>
 
                     </div>
@@ -518,7 +517,7 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                         <h3 class="text-lg font-medium text-muted-foreground">Ganancia Total</h3>
                         <p class="mt-1 text-4xl font-semibold tracking-tight text-blue-500">{{
                             formatCurrency(totalGanancia)
-                        }}</p>
+                            }}</p>
                     </div>
                 </div>
 
@@ -543,7 +542,7 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                                 ]">
                                 <div class="flex flex-col text-center">
                                     <span>{{ sub.plan.name }} #{{ sub.sequence_id }}</span>
-                                    
+
                                 </div>
                             </button>
                         </nav>
@@ -551,7 +550,7 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
 
                     <div v-if="activeSubscription" class="overflow-x-auto">
                         <div></div>
-                    
+
                         <div class="grid grid-cols-2 gap-4 mb-4 text-center">
                             <div class="p-4 bg-muted rounded-lg">
                                 <h4 class="text-sm font-medium text-muted-foreground">Inversión en este Plan</h4>
@@ -569,7 +568,7 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                             <thead class="border-b">
                                 <tr>
                                     <th scope="col" class="px-4 py-3 font-medium"># Pago</th>
-                                    
+
                                     <th scope="col" class="px-4 py-3 font-medium text-left">Monto</th>
                                     <th scope="col" class="px-4 py-3 font-medium text-center">Estado</th>
                                     <th scope="col" class="px-4 py-3 font-medium">Fecha de Pago</th>
@@ -644,9 +643,9 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                                             <td class="py-2 font-mono">#{{ sub.sequence_id }}</td>
                                             <td class="py-2">{{ sub.plan.name }}</td>
                                             <td class="py-2 font-mono">{{ formatCurrency(sub.initial_investment)
-                                            }}</td>
+                                                }}</td>
                                             <td class="py-2">{{ new Date(sub.created_at).toLocaleString('es-CO')
-                                            }}</td>
+                                                }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -780,37 +779,38 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                             formatCurrency(totalAvailable) }}</p>
                     </div>
                     <div class="md:col-span-2 flex flex-col items-center gap-5 w-full max-w-3xl mx-auto mt-2">
-    
-    <Button @click="isInvestmentModalOpen = true"
-        class="w-full h-16 md:h-20 text-xl md:text-2xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-spotlight">
-        <TrendingUp class="mr-3 h-7 w-7 md:h-8 md:w-8" />
-        Nueva Inversión
-    </Button>
 
-    <div class="w-full flex flex-col sm:flex-row justify-center items-center gap-3">
-        
-        <Button @click="isWithdrawalModalOpen = true" variant="outline"
-            class="w-full sm:flex-1 text-base h-12 px-6 rounded-full hover:bg-muted transition-colors border-2">
-            <Landmark class="mr-2 h-5 w-5 text-muted-foreground" />
-            Retirar Saldo
-        </Button>
+                        <Button @click="isInvestmentModalOpen = true"
+                            class="w-full h-16 md:h-20 text-xl md:text-2xl rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 animate-spotlight">
+                            <TrendingUp class="mr-3 h-7 w-7 md:h-8 md:w-8" />
+                            Nueva Inversión
+                        </Button>
 
-        <Button @click="isTransferModalOpen = true" variant="outline"
-            class="w-full sm:flex-1 text-base h-12 px-6 rounded-full hover:bg-muted transition-colors border-2">
-            <Send class="mr-2 h-5 w-5 text-muted-foreground" />
-            Enviar Dinero
-        </Button>
+                        <div class="w-full flex flex-col sm:flex-row justify-center items-center gap-3">
 
-        <Link :href="route('referrals.index')" class="w-full sm:flex-1">
-            <Button variant="secondary" class="w-full text-base h-12 px-6 rounded-full shadow-sm hover:shadow-md transition-all">
-                <Gift class="mr-2 h-5 w-5" />
-                Mis Referidos
-            </Button>
-        </Link>
-        
-    </div>
+                            <Button @click="isWithdrawalModalOpen = true" variant="outline"
+                                class="w-full sm:flex-1 text-base h-12 px-6 rounded-full hover:bg-muted transition-colors border-2">
+                                <Landmark class="mr-2 h-5 w-5 text-muted-foreground" />
+                                Retirar Saldo
+                            </Button>
 
-</div>
+                            <Button @click="isTransferModalOpen = true" variant="outline"
+                                class="w-full sm:flex-1 text-base h-12 px-6 rounded-full hover:bg-muted transition-colors border-2">
+                                <Send class="mr-2 h-5 w-5 text-muted-foreground" />
+                                Enviar Dinero
+                            </Button>
+
+                            <Link :href="route('referrals.index')" class="w-full sm:flex-1">
+                                <Button variant="secondary"
+                                    class="w-full text-base h-12 px-6 rounded-full shadow-sm hover:shadow-md transition-all">
+                                    <Gift class="mr-2 h-5 w-5" />
+                                    Mis Referidos
+                                </Button>
+                            </Link>
+
+                        </div>
+
+                    </div>
                 </div>
             </template>
             <template v-else>
@@ -853,7 +853,7 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                         <div class="p-4 rounded-lg bg-muted text-center border w-full">
                             <p class="font-semibold">🏆 ¡Mira lo que nuestros usuarios más fieles han ganado!</p>
                             <Link :href="route('winners.index')" class="mt-2 inline-block">
-                            <Button size="sm" variant="outline">Ver Ganadores</Button>
+                                <Button size="sm" variant="outline">Ver Ganadores</Button>
                             </Link>
                         </div>
 
@@ -974,19 +974,19 @@ const emailUrl = computed(() => `mailto:?subject=${text}&body=Regístrate usando
                         <div class="grid gap-2">
                             <Label>Enviar a</Label>
                             <div class="grid grid-cols-2 gap-3">
-    <label v-for="method in staticPaymentMethods" :key="method.id"
-        class="flex flex-col items-center justify-center p-4 border rounded-lg cursor-pointer transition-all"
-        :class="{ 'ring-2 ring-primary border-primary': withdrawalForm.payment_method === method.name }">
-        
-        <input type="radio" v-model="withdrawalForm.payment_method" :value="method.name"
-            class="sr-only" />
-        
-        <img :src="getLogoUrl(method.logo_path)" :alt="method.name"
-            class="h-16 w-full object-contain mb-2">
-            
-        <span class="text-lg font-semibold">{{ method.name }}</span>
-    </label>
-</div>
+                                <label v-for="method in staticPaymentMethods" :key="method.id"
+                                    class="flex flex-col items-center justify-center p-4 border rounded-lg cursor-pointer transition-all"
+                                    :class="{ 'ring-2 ring-primary border-primary': withdrawalForm.payment_method === method.name }">
+
+                                    <input type="radio" v-model="withdrawalForm.payment_method" :value="method.name"
+                                        class="sr-only" />
+
+                                    <img :src="getLogoUrl(method.logo_path)" :alt="method.name"
+                                        class="h-16 w-full object-contain mb-2">
+
+                                    <span class="text-lg font-semibold">{{ method.name }}</span>
+                                </label>
+                            </div>
                             <InputError :message="withdrawalForm.errors.payment_method" />
                         </div>
 
